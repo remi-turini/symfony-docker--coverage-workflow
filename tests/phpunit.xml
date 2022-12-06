@@ -15,4 +15,5 @@
 		</testsuite>
 	</testsuites>
 	<logging/>
+    <server name="KERNEL_CLASS" value="App\Kernel" />
 </phpunit>
