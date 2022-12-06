@@ -15,5 +15,8 @@
 		</testsuite>
 	</testsuites>
 	<logging/>
-    <env name="KERNEL_CLASS" value="App\Kernel" />
 </phpunit>
+
+<php>
+    <env name="KERNEL_CLASS" value="App\Kernel" />
+</php>
