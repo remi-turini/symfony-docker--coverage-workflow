@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+    pharmapp-mariadb-local:
+        container_name: pharmapp-mariadb-local
+        image: mariadb:10.7
+        restart: unless-stopped
+        env_file: .env
+        volumes:
+          - ./db:/var/lib/mysql:cached
+        networks:
+          - pharmapp-local
+
+    pharmapp-apache-local:
+        container_name: pharmapp-apache-local
+        image: pharmapp:${VERSION}-apache-local
+        build: ./docker-conf/apache
+        restart: unless-stopped
+        env_file: .env
+        ports:
+          - 8080:80
+        depends_on:
+          - pharmapp-mariadb-local
+        volumes:
+          - .:/var/www/html:delegated
+          - /var/www/html/db # avoid mapping ./db inside this container 
+        networks:
+          - pharmapp-local
+    
+    pharmapp-phpmyadmin-local:
+        container_name: pharmapp-phpmyadmin-local
+        image: phpmyadmin/phpmyadmin
+        environment:
+          - PMA_HOST=pharmapp-mariadb-local
+        ports:
+          - 8082:80
+        networks:
+          - pharmapp-local
+
+networks:
+  pharmapp-local:
+    external: true

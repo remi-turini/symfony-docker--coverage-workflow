@@ -1,0 +1,4 @@
+App\Entity\User:
+  user:
+    email: test\@domain.com
+    password: "root"
