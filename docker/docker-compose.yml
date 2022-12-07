@@ -13,7 +13,7 @@ services:
     environment:
 #      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_DATABASE: pharmapp
-      MYSQL_USER: root
+#      MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root
     networks:
       - dev
@@ -57,6 +57,7 @@ services:
     volumes:
       - ../:/var/www
       - ./vhost:/etc/apache2/sites-enabled
+    command: composer install
     restart: always
 #    links:
 #      - database

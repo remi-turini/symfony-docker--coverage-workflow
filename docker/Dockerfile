@@ -21,15 +21,17 @@ RUN cd /usr/local/etc/php/conf.d/ && \
   echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-ram-limit.ini
 
 #COPY . /var/www/
-
 #COPY ./docker/vhost/apache.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/
+#ENV COMPOSER_ALLOW_SUPERUSER = 1
 #RUN composer install
 
 ENTRYPOINT ["bash", "./docker/docker.sh"]
-#ENV COMPOSER_ALLOW_SUPERUSER = 1
+
 
 EXPOSE 80 25
 
+#CMD bash -c "composer install"
+#CMD ["composer", "install"]
 #CMD ["maildev", "--web", "80", "--smtp", "25"]
