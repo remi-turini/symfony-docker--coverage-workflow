@@ -11,55 +11,55 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MedicationControllerTest extends Main
 {
-    public function findOneMedication($client)
-    {
-        /** @var MedicationRepository $medicationRepository */
-        $medicationRepository = $client->getContainer()->get(MedicationRepository::class);
-        /** @var Medication $medication */
-        $medication = $medicationRepository->findOneRandom();
+//    public function findOneMedication($client)
+//    {
+//        /** @var MedicationRepository $medicationRepository */
+//        $medicationRepository = $client->getContainer()->get(MedicationRepository::class);
+//        /** @var Medication $medication */
+//        $medication = $medicationRepository->findOneRandom();
+//
+//        return $medication;
+//    }
 
-        return $medication;
-    }
-
-    public function testUserMedicationAdd()
-    {
-        $client = static::createClient();
-
-        // unauthorized
-        $this->loginUser($client, "false@domain.com");
-        $client->request("GET", "/auth/medication/user/add");
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
-
-        $this->loginUser($client, "user@domain.com");
-
-        // no medication
-        $medication = $this->findOneMedication($client);
-
-        $client->request("GET", "/auth/medication/user/add");
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_NO_CONTENT);
-
-        // no medication in medication list
-        $medication = $this->findOneMedication($client);
-
-        $client->request("GET", "/auth/medication/user/add", [
-            "medicationId" => $medication?->getId(),
-        ]);
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_NO_CONTENT);
-
-        // create medication
-        /** @var Medication $medication */
-        $medication = (new Medication());
-        static::persistEntity($medication);
-
-        $client->request("GET", "/auth/medication/user/add", [
-            "medicationId" => $medication?->getId(),
-        ]);
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
-    }
+//    public function testUserMedicationAdd()
+//    {
+//        $client = static::createClient();
+//
+//        // unauthorized
+//        $this->loginUser($client, "false@domain.com");
+//        $client->request("GET", "/auth/medication/user/add");
+//
+//        $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
+//
+//        $this->loginUser($client, "user@domain.com");
+//
+//        // no medication
+//        $medication = $this->findOneMedication($client);
+//
+//        $client->request("GET", "/auth/medication/user/add");
+//
+//        $this->assertResponseStatusCodeSame(Response::HTTP_NO_CONTENT);
+//
+//        // no medication in medication list
+//        $medication = $this->findOneMedication($client);
+//
+//        $client->request("GET", "/auth/medication/user/add", [
+//            "medicationId" => $medication?->getId(),
+//        ]);
+//
+//        $this->assertResponseStatusCodeSame(Response::HTTP_NO_CONTENT);
+//
+//        // create medication
+//        /** @var Medication $medication */
+//        $medication = (new Medication());
+//        static::persistEntity($medication);
+//
+//        $client->request("GET", "/auth/medication/user/add", [
+//            "medicationId" => $medication?->getId(),
+//        ]);
+//
+//        $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
+//    }
 
     public function testUserMedicationAll()
     {
@@ -94,23 +94,23 @@ class MedicationControllerTest extends Main
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }
 
-    public function testMedicationDetail()
-    {
-        $client = static::createClient();
-
-        // no medication
-        $client->request("GET", "/medication/detail");
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_NO_CONTENT);
-
-        // one medication
-        $medication = $this->findOneMedication($client);
-        $client->request("GET", "/medication/detail", [
-            "medicationId" => $medication?->getId()
-        ]);
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-    }
+//    public function testMedicationDetail()
+//    {
+//        $client = static::createClient();
+//
+//        // no medication
+//        $client->request("GET", "/medication/detail");
+//
+//        $this->assertResponseStatusCodeSame(Response::HTTP_NO_CONTENT);
+//
+//        // one medication
+//        $medication = $this->findOneMedication($client);
+//        $client->request("GET", "/medication/detail", [
+//            "medicationId" => $medication?->getId()
+//        ]);
+//
+//        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+//    }
 
     public function testMedicationAddDemand()
     {
