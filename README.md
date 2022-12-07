@@ -21,5 +21,6 @@ php bin/console doctrine:fixtures:load --env=test --quiet
 Executer les tests :
 ```
 php bin/phpunit
+php bin/phpunit --coverage-html ./var/cache/test
 ```
 
