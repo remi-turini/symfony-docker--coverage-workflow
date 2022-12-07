@@ -57,7 +57,7 @@ services:
     volumes:
       - ../:/var/www
       - ./vhost:/etc/apache2/sites-enabled
-    command: composer install
+#    command: composer install --ignore-platform-reqs
     restart: always
 #    links:
 #      - database
