@@ -54,7 +54,7 @@ class UserControllerTest extends WebTestCase
         $this->loginUser($client, "false@domain.com");
         $client->request("GET", "/auth/user/update");
 
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
 
         // wrong password
         $this->loginUser($client, "user@domain.com");
