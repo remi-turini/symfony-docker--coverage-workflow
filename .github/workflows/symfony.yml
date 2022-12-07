@@ -21,3 +21,4 @@ jobs:
         env:
           XDEBUG_MODE: coverage
           TEST_NAME: Scarlett
+          NODE_OPTIONS: "--max-old-space-size=8192"
