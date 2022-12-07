@@ -46,7 +46,7 @@ class UserControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }
 
-    public function testUserUpdateWrongPassword()
+    public function testUserUpdate()
     {
         $client = static::createClient();
 
