@@ -1,6 +1,6 @@
 ## Que contient ce dépot ?
 
-Ce dépot contient une api, une sécurité d'accès à l'api par token, une configuration d'authentification utilisateur et de rôle administrateur, une configuration docker, et également des tests unitaires et fonctionnels ainsi qu'un workflow github
+Ce dépot contient une api, une sécurité d'accès à l'api par token, une configuration d'authentification utilisateur et de rôle administrateur, une configuration docker containérisant l'api (php + composer, mysql, phpmyadmin, maildev), et également des tests unitaires et fonctionnels ainsi qu'un workflow github
 
 ## Déploiement du docker
 
@@ -21,7 +21,6 @@ Mettre à jour la bdd structuréllement :
 ```
 php bin/console doctrine:schema:update
 ```
-
 
 Charger le jeu de fausses données : 
 ```
