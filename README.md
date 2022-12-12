@@ -1,6 +1,6 @@
 ## Que contient ce dépot ?
 
-Une configuration d'authentification utilisateur et de rôle administrateur, une configuration docker, et également des tests unitaires et fonctionnels ainsi qu'un workflow github  
+Ce dépot contient une api, une sécurité d'accès à l'api par token, une configuration d'authentification utilisateur et de rôle administrateur, une configuration docker, et également des tests unitaires et fonctionnels ainsi qu'un workflow github
 
 ## Déploiement du docker
 
