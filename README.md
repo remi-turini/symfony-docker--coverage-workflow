@@ -1,6 +1,11 @@
 ## Que contient ce dépot ?
 
-Ce dépot contient une api, une sécurité d'accès à l'api par token, une configuration d'authentification utilisateur et de rôle administrateur, une configuration docker containérisant l'api (php + composer, mysql, phpmyadmin, maildev), et également des tests unitaires et fonctionnels ainsi qu'un workflow github
+- Une api
+- Une sécurité d'accès à l'api par token
+- Une configuration d'authentification utilisateur et de rôle administrateur
+- Une configuration docker containérisant l'api (php + composer, mysql, phpmyadmin, maildev)
+- Des tests unitaires et fonctionnels 
+- Un workflow github
 
 ## Déploiement du docker
 
