@@ -1,11 +1,21 @@
-# Déploiement du docker
+## Que contient ce dépot ?
+
+Une configuration d'authentification utilisateur et de rôle administrateur, une configuration docker, et également des tests unitaires et fonctionnels ainsi qu'un workflow github  
+
+## Déploiement du docker
 
 ```
  cd ./pharmapp-api-v1/docker
  docker-compose up -d --build
 ```
 
-# Memo dév
+Dans le cas ou le composer install n'est pas éxécuté
+```
+ docker exec -it symfony bash
+ composer install
+```
+
+## Memo dév
 
 Mettre à jour la bdd structuréllement :
 ```
