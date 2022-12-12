@@ -5,7 +5,7 @@ Ce dépot contient une api, une sécurité d'accès à l'api par token, une conf
 ## Déploiement du docker
 
 ```
- cd ./pharmapp-api-v1/docker
+ cd ./docker
  docker-compose up -d --build
 ```
 
