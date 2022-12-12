@@ -17,8 +17,8 @@ RUN pecl install xdebug-3.1.4 \
     && echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-RUN cd /usr/local/etc/php/conf.d/ && \
-  echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-ram-limit.ini
+#RUN cd /usr/local/etc/php/conf.d/ && \
+#  echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-ram-limit.ini
 
 #COPY . /var/www/
 #COPY ./docker/vhost/apache.conf /etc/apache2/sites-available/000-default.conf
