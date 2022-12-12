@@ -1,4 +1,4 @@
-composer install
+#composer install
 
 php bin/console doctrine:database:create --no-interaction
 php bin/console doctrine:database:create --env=test --no-interaction
