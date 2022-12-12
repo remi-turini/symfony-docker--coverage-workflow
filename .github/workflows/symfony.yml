@@ -21,3 +21,4 @@ jobs:
         env:
           XDEBUG_MODE: coverage
           TEST_NAME: Scarlett
+          APP_SECRET: aa13278c2d9d802df8cbceef5bfc8cac

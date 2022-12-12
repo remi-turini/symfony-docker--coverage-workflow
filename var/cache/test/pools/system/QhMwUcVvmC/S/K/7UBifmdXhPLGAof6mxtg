@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CMedication%2523setObsolete
+
+return [PHP_INT_MAX, []];

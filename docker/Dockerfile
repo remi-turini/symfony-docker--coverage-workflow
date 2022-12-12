@@ -5,7 +5,8 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 #RUN chmod +x /usr/local/bin/install-php-extensions && \
 #install-php-extensions pdo_mysql intl zip
 
-RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && mv composer.phar /usr/local/bin/composer
+RUN #curl -sSk https://getcomposer.org/installer | php -- --disable-tls && mv composer.phar /usr/local/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN apt-get update && apt-get -y install libzip-dev libicu-dev
 
@@ -16,16 +17,21 @@ RUN pecl install xdebug-3.1.4 \
     && echo "xdebug.mode=coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-#COPY . /var/www/
+RUN cd /usr/local/etc/php/conf.d/ && \
+  echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-ram-limit.ini
 
+#COPY . /var/www/
 #COPY ./docker/vhost/apache.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/
+#ENV COMPOSER_ALLOW_SUPERUSER = 1
 #RUN composer install
 
 ENTRYPOINT ["bash", "./docker/docker.sh"]
-#ENV COMPOSER_ALLOW_SUPERUSER = 1
+
 
 EXPOSE 80 25
 
+#CMD bash -c "composer install"
+#CMD ["composer", "install"]
 #CMD ["maildev", "--web", "80", "--smtp", "25"]
